@@ -1,8 +1,7 @@
 (ns rejavanate.core
   (:require [clojure.tools.namespace.repl :refer [refresh-all]]
             [virgil.compile :refer [compile-all-java java-file?]]
-            [clojure.java.io :as io]
-            [clojure.edn :as edn]))
+            [clojure.java.io :as io]))
 
 (defn lein-project-file []
   (io/file "project.clj"))
@@ -12,7 +11,7 @@
     (when (.exists lpf)
       (->> lpf
            slurp
-           edn/read-string
+           read-string
            (drop-while (partial not= :java-source-paths))
            second))))
 
